@@ -6,7 +6,7 @@ node {
     }
 
     stage('Build image') {
-        app = docker.build("julienduf/test-node-ts:latest")
+        app = docker.build("julienduf/test-python:latest")
     }
 
     stage('Push image') {
