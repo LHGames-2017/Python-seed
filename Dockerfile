@@ -4,4 +4,4 @@ ADD . .
 
 EXPOSE 3000
 
-CMD ["python", "ai.py"]
+CMD ["python", "server.py"]

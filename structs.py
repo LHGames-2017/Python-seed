@@ -1,25 +1,23 @@
 import math
-import json
+
 
 class ActionTypes():
-    DefaultAction, MoveAction, AttackAction, CollectAction, UpgradeAction, StealAction, PurchaseAction, HealAction = \
+    DefaultAction, MoveAction, MeleeAttackAction, CollectAction, UpgradeAction, StealAction, PurchaseAction, HealAction = \
         range(8)
 
 
 class UpgradeType():
-    CarryingCapacity, AttackPower, Defence, MaximumHealth, CollectingSpeed = range(5)
+    CarryingCapacity, AttackPower, Defence, MaximumHealth, CollectingSpeed = range(
+        5)
 
 
 class TileType():
     Tile, Wall, House, Lava, Resource, Shop = range(6)
 
 
-class TileContent():
-    Empty, Wall, House, Lava, Resource, Shop, Player = range(7)
-
-
 class PurchasableItem():
-    MicrosoftSword, UbisoftShield, DevolutionBackpack, DevolutionPickaxe, HealthPotion = range(5)
+    Sword, Shield, Backpack, Pickaxe, HealthPotion = range(5)
+
 
 class Point(object):
 
@@ -38,6 +36,11 @@ class Point(object):
     def __str__(self):
         return "{{{0}, {1}}}".format(self.X, self.Y)
 
+    def __eq__(self, other):
+        if isinstance(other, Point):
+            return self.X == other.X and self.Y == other.Y
+        return NotImplemented
+
     # Distance between two Points
     @staticmethod
     def Distance(p1, p2):
@@ -54,34 +57,6 @@ class GameInfo(object):
         self.Map = None
         self.OtherPlayers = dict()
 
-
-class Tile(object):
-
-    def __init__(self, content=None, x=0, y=0):
-        self.Content = content
-        self.X = x
-        self.Y = y
-
-
-class Player(object):
-
-    def __init__(self, health, maxHealth, position, houseLocation, score, carriedRessources,
-                 carryingCapacity=1000):
-        self.Health = health
-        self.MaxHealth = maxHealth
-        self.Position = position
-        self.HouseLocation = houseLocation
-        self.Score = score
-        self.CarriedRessources = carriedRessources
-        self.CarryingCapacity = carryingCapacity
-
-
-class PlayerInfo(object):
-
-    def __init__(self, health, maxHealth, position):
-        self.Health = health
-        self.MaxHealth = maxHealth
-        self.Position = position
 
 class ActionContent(object):
 
