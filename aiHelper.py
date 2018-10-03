@@ -1,6 +1,7 @@
 from structs import *
 import json
 
+
 def create_move_action(direction):
     """
     Creates a move action to the specified direction. You can only move
@@ -55,11 +56,13 @@ def create_purchase_action(item):
     """
     return _create_action("PurchaseAction", item)
 
+
 def create_empty_action():
     """
     Creates an action that does nothing.
     """
     return ""
+
 
 def _create_action(action_type, target):
     """

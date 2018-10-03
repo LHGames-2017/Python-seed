@@ -1,4 +1,4 @@
-from structs import Point 
+from structs import Point
 from tile import *
 
 
@@ -47,6 +47,6 @@ class GameMap:
                             amountLeft, density
                         ))
 
-                if not tileType == TileContent.Resource:
+                if tileType != TileContent.Resource:
                     self.tiles[i].append(
                         Tile(tileType, i + self.xMin, j + self.yMin))
