@@ -1,51 +1,47 @@
 import math
 
 
-class ActionTypes():
+class ActionTypes:
     DefaultAction, MoveAction, MeleeAttackAction, CollectAction, UpgradeAction, StealAction, PurchaseAction, HealAction = \
         range(8)
 
 
-class UpgradeType():
+class UpgradeType:
     CarryingCapacity, AttackPower, Defence, MaximumHealth, CollectingSpeed = range(
         5)
 
 
-class TileType():
-    Tile, Wall, House, Lava, Resource, Shop = range(6)
-
-
-class PurchasableItem():
+class PurchasableItem:
     Sword, Shield, Backpack, Pickaxe, HealthPotion = range(5)
 
 
 class Point(object):
 
     # Constructor
-    def __init__(self, X=0, Y=0):
-        self.X = X
-        self.Y = Y
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
 
     # Overloaded operators
     def __add__(self, point):
-        return Point(self.X + point.X, self.Y + point.Y)
+        return Point(self.y + point.x, self.y + point.y)
 
     def __sub__(self, point):
-        return Point(self.X - point.X, self.Y - point.Y)
+        return Point(self.y - point.x, self.y - point.y)
 
     def __str__(self):
-        return "{{{0}, {1}}}".format(self.X, self.Y)
+        return "{{{0}, {1}}}".format(self.x, self.y)
 
     def __eq__(self, other):
         if isinstance(other, Point):
-            return self.X == other.X and self.Y == other.Y
+            return self.x == other.x and self.y == other.y
         return NotImplemented
 
     # Distance between two Points
     @staticmethod
     def Distance(p1, p2):
-        delta_x = p1.X - p2.X
-        delta_y = p1.Y - p2.Y
+        delta_x = p1.x - p2.x
+        delta_y = p1.y - p2.y
         return math.sqrt(math.pow(delta_x, 2) + math.pow(delta_y, 2))
 
 

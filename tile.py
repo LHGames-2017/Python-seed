@@ -1,19 +1,26 @@
 from structs import Point
+from enum import Enum
 
 
 class Tile:
-    def __init__(self, tileType, x, y):
-        self.TileType = tileType
+    def __init__(self, tile_content, x, y):
+        self.TileContent = tile_content
         self.Position = Point(x, y)
         pass
 
 
 class ResourceTile(Tile):
-    def __init__(self, tileType, x, y, amountLeft, density):
-        Tile.__init__(self, tileType, x, y)
-        self.AmountLeft = amountLeft
+    def __init__(self, tile_content, x, y, amount_left, density):
+        Tile.__init__(self, tile_content, x, y)
+        self.AmountLeft = amount_left
         self.Density = density
 
 
-class TileContent():
-    Empty, Wall, House, Lava, Resource, Shop, Player = range(7)
+class TileContent(Enum):
+    Empty = 0
+    Wall = 1
+    House = 2
+    Lava = 3
+    Resource = 4
+    Shop = 5
+    Player = 6

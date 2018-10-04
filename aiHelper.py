@@ -69,5 +69,5 @@ def _create_action(action_type, target):
     Private method to convert the action to a string. 
     You shouldn't call this.
     """
-    actionContent = ActionContent(action_type, target.__dict__)
+    actionContent = ActionContent(action_type, json.dumps(target.__dict__))
     return json.dumps(actionContent.__dict__)
