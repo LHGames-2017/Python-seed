@@ -1,16 +1,18 @@
 node {
-    def app
-    
     stage('Clone repository') {
         checkout scm
     }
 
+    stage('Initialize'){
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+
     stage('Build image') {
-        app = docker.build("julienduf/test-python:latest")
+        sh 'docker build -t {{image}}:version-$BUILD_NUMBER .'
     }
 
     stage('Push image') {
-        app.push("latest");
+        sh 'docker push {{image}}:version-$BUILD_NUMBER'
     }
 }
-
