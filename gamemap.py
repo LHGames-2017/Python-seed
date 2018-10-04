@@ -31,24 +31,21 @@ class GameMap:
             self.tiles.append([])
             column = rows[i + 1].split('{')
             for j in range(len(column) - 1):
-                tile_content = TileContent.Empty
+                x = i + self.xMin
+                y = j + self.yMin
+                # Tile is not empty
                 if not column[j + 1][0] == '}':
                     infos = column[j + 1].split('}')
-                    if len(infos[0]) > 1:
-                        tile_content = TileContent(int(infos[0][0]))
+                    # Info may contain only tile content, but could also contain additional info for specific tile types
+                    if infos[0].find(',') != -1:
+                        infos = infos[0].split(',')
+
+                    # Handle tile types
+                    if TileContent(int(infos[0])) == TileContent.Resource:
+                        amount_left = int(infos[1])
+                        density = float(infos[2])
+                        self.tiles[i].append(ResourceTile(TileContent(int(infos[0])), x, y, amount_left, density))
                     else:
-                        tile_content = TileContent(int(infos[0]))
-
-                self.tiles[i].append(
-                    Tile(tile_content, i + self.xMin, j + self.yMin))
-                    # if tileType == TileContent.Resource:
-                    #     amountLeft = int(infos[1])
-                    #     density = int(infos[2])
-                    #     self.tiles[i].append(ResourceTile(
-                    #         tileType, i, j,
-                    #         amountLeft, density
-                    #     ))
-
-                # if tileType != TileContent.Resource:
-                #     self.tiles[i].append(
-                #         Tile(tileType, i + self.xMin, j + self.yMin))
+                        self.tiles[i].append(Tile(TileContent(int(infos[0])), x, y))
+                else:
+                    self.tiles[i].append(Tile(TileContent.Empty, x, y))
