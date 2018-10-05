@@ -2,9 +2,10 @@ from helper.tile import *
 
 
 class GameMap:
-    def __init__(self, serializedMap, xMin, yMin):
+    def __init__(self, serializedMap, xMin, yMin, wallsAreBreakable):
         self.xMin = xMin
         self.yMin = yMin
+        self.wallsAreBreakable = wallsAreBreakable
         self.deserializeMap(serializedMap)
         self.initMapSize()
 
