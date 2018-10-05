@@ -1,4 +1,4 @@
-from tile import *
+from helper.tile import *
 
 
 class GameMap:

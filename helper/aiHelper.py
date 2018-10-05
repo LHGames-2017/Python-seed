@@ -1,4 +1,4 @@
-from structs import *
+from helper.structs import *
 import json
 
 

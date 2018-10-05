@@ -1,4 +1,4 @@
-from structs import Point
+from helper.structs import Point
 from enum import Enum
 
 

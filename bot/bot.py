@@ -1,5 +1,4 @@
-from aiHelper import *
-from structs import *
+from helper import *
 
 
 class Bot:

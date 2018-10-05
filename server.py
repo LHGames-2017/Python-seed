@@ -1,9 +1,7 @@
-from flask import Flask, request
-from structs import Point
-from bot import Bot
-from player import Player
-from gamemap import GameMap
 import json
+from flask import Flask, request
+from helper import GameMap, Player, Point
+from bot import Bot
 
 app = Flask(__name__)
 
@@ -25,8 +23,13 @@ def deserialize(data):
     return data
 
 
+@app.route("/", methods=["GET"])
+def ping():
+    return "I am alive!"
+
+
 @app.route("/", methods=["POST"])
-def reponse():
+def response():
     """
     Point d'entree appelle par le GameServer
     """
