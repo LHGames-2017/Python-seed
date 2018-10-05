@@ -21,7 +21,7 @@ def deserialize(data):
                       data["UpgradeLevels"])
     elif "CustomSerializedMap" in data:
         data["GameMap"] = GameMap(
-            data["CustomSerializedMap"], data["xMin"], data["yMin"])
+            data["CustomSerializedMap"], data["xMin"], data["yMin"], data["WallsAreBreakable"])
     return data
 
 

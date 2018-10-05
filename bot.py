@@ -19,7 +19,7 @@ class Bot:
             :param gameMap: The gamemap.
             :param visiblePlayers:  The list of visible players.
         """
-        # Write your bot here. Use functions from aiHelper to instanciate your actions.
+        # Write your bot here. Use functions from aiHelper to instantiate your actions.
         return create_move_action(Point(1, 0))
 
     def after_turn(self):
